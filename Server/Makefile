@@ -131,44 +131,71 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named exec
+# Target rules for targets named cripto
 
 # Build rule for target.
-exec: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exec
-.PHONY : exec
+cripto: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cripto
+.PHONY : cripto
 
 # fast build rule for target.
-exec/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/build
-.PHONY : exec/fast
+cripto/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/build
+.PHONY : cripto/fast
 
-example.o: example.cpp.o
+main.o: main.cpp.o
 
-.PHONY : example.o
+.PHONY : main.o
 
 # target to build an object file
-example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/example.cpp.o
-.PHONY : example.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-example.i: example.cpp.i
+main.i: main.cpp.i
 
-.PHONY : example.i
+.PHONY : main.i
 
 # target to preprocess a source file
-example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/example.cpp.i
-.PHONY : example.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-example.s: example.cpp.s
+main.s: main.cpp.s
 
-.PHONY : example.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/example.cpp.s
-.PHONY : example.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+processing/data_processing.o: processing/data_processing.cpp.o
+
+.PHONY : processing/data_processing.o
+
+# target to build an object file
+processing/data_processing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/processing/data_processing.cpp.o
+.PHONY : processing/data_processing.cpp.o
+
+processing/data_processing.i: processing/data_processing.cpp.i
+
+.PHONY : processing/data_processing.i
+
+# target to preprocess a source file
+processing/data_processing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/processing/data_processing.cpp.i
+.PHONY : processing/data_processing.cpp.i
+
+processing/data_processing.s: processing/data_processing.cpp.s
+
+.PHONY : processing/data_processing.s
+
+# target to generate assembly for a file
+processing/data_processing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/processing/data_processing.cpp.s
+.PHONY : processing/data_processing.cpp.s
 
 # Help Target
 help:
@@ -178,10 +205,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... exec"
-	@echo "... example.o"
-	@echo "... example.i"
-	@echo "... example.s"
+	@echo "... cripto"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... processing/data_processing.o"
+	@echo "... processing/data_processing.i"
+	@echo "... processing/data_processing.s"
 .PHONY : help
 
 

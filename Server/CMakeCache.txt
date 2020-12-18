@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=EXAMPLE
+CMAKE_PROJECT_NAME:STATIC=cripto_project
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -220,6 +220,12 @@ EXAMPLE_SOURCE_DIR:STATIC=/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestr
 
 //The directory containing a CMake configuration file for SEAL.
 SEAL_DIR:PATH=/home/maxvital/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Server/lib/cmake/SEAL-3.6
+
+//Value Computed by CMake
+cripto_project_BINARY_DIR:STATIC=/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Server
+
+//Value Computed by CMake
+cripto_project_SOURCE_DIR:STATIC=/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Server
 
 
 ########################
