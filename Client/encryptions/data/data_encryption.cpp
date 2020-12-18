@@ -1,81 +1,73 @@
 #include "data_encryption.h"
 
-void data_encryption(int** data,Ciphertext** cypher,Ciphertext** bitM,int lines,int columns){
+void data_encryption(int **data, Ciphertext **cypher, Ciphertext **bitM, int lines, int columns)
+{
     int buffer;
     int holder;
     ofstream file;
     ifstream parms_file;
     ifstream pb_file;
-    int line=0;
+    int line = 0;
     PublicKey db_pubkey;
-    //
-    SecretKey db_seckey;
-    ifstream sec_file;
 
     //instanciacao da encriptacao
-    EncryptionParameters parms(scheme_type::bfv);   //encriptacao em bfv para calculos em integers encriptados
+    EncryptionParameters parms(scheme_type::bfv); //encriptacao em bfv para calculos em integers encriptados
 
-    parms_file.open("lib/assets/certificates/database/parms.pem",ios::binary);
+    parms_file.open("../assets/certificates/database/parms.pem", ios::binary);
     parms.load(parms_file);
     parms_file.close();
 
-    pb_file.open("lib/assets/certificates/database/db_pbkey.key",ios::binary);
-    //
-    sec_file.open("lib/assets/certificates/database/db_sckey.key",ios::binary);
+    pb_file.open("../assets/certificates/database/db_pbkey.key", ios::binary);
 
     //contexto e validacao
     SEALContext context(parms);
 
-    if(pb_file.is_open()){
-        db_pubkey.load(context,pb_file);
+    if (pb_file.is_open())
+    {
+        db_pubkey.load(context, pb_file);
         pb_file.close();
-    }
-    //
-    if(sec_file.is_open()){
-        db_seckey.load(context,sec_file);
-        sec_file.close();
     }
 
     //encriptacao usando public
     Encryptor encryptor(context, db_pubkey);
 
-    //decriptacao usando private
-    Decryptor decryptor(context, db_seckey);
-
     //computacao no ciphertext
     Evaluator evaluator(context);
 
-    file.open("lib/assets/certificates/database/data.bin",ios::binary);
+    file.open("../assets/certificates/database/data.bin", ios::binary);
 
-    for(int i=0;i<lines;i++){
-        for(int j=0;j<columns;j++){
-            std::stringstream hexstream (ios_base::out);
-            buffer=data[i][j];
+    for (int i = 0; i < lines; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            std::stringstream hexstream(ios_base::out);
+            buffer = data[i][j];
             hexstream << std::hex << buffer;
             Plaintext plain_buffer(hexstream.str());
             Ciphertext buffer_encrypted;
             std::string input_bin = std::bitset<8>(buffer).to_string();
-            std::cout<<input_bin<<"<-Binario" << endl;
-            encryptor.encrypt(plain_buffer,buffer_encrypted);
-            cypher[i][j]=buffer_encrypted;
+            std::cout << input_bin << "<-Binario" << endl;
+            encryptor.encrypt(plain_buffer, buffer_encrypted);
+            cypher[i][j] = buffer_encrypted;
             file << buffer_encrypted.save_size();
             buffer_encrypted.save(file);
-            for(int k=0;k<8;k++){
+            for (int k = 0; k < 8; k++)
+            {
                 int x;
-                if(input_bin[k]=='0'){
-                    x=0;
-                }else{
-                    x=1;
+                if (input_bin[k] == '0')
+                {
+                    x = 0;
+                }
+                else
+                {
+                    x = 1;
                 }
                 Plaintext x_plain_bin(to_string(x));
                 Ciphertext x_encrypted_bin;
                 encryptor.encrypt(x_plain_bin, x_encrypted_bin);
-                //cout << "guarda" << endl;
-                bitM[line][k]=x_encrypted_bin;
-                //cout << "passa" << endl;
+                bitM[line][k] = x_encrypted_bin;
                 file << x_encrypted_bin.save_size();
                 x_encrypted_bin.save(file);
-                //cout << "  Inicio  + noise budget in freshly encrypted x: " << decryptor.invariant_noise_budget(bitM[line][k]) << " bits" << endl;
             }
             line++;
         }
@@ -83,15 +75,16 @@ void data_encryption(int** data,Ciphertext** cypher,Ciphertext** bitM,int lines,
     file.close();
 }
 
-void data_decryption(Ciphertext** cypher,Ciphertext** bitM,int lines,int columns,int** data){
+void data_decryption(Ciphertext **cypher, Ciphertext **bitM, int lines, int columns, int **data)
+{
     Plaintext buffer_decrypted;
     Plaintext data_decrypted;
     Plaintext bytesize_decrypted;
     Ciphertext load_buffer;
-    char* memblock;
+    char *memblock;
     streampos size;
     int cypher_size;
-    char* cypher_buffer;
+    char *cypher_buffer;
     char separator;
     std::string frase;
     int sum;
@@ -102,19 +95,20 @@ void data_decryption(Ciphertext** cypher,Ciphertext** bitM,int lines,int columns
     ifstream sec_file;
 
     //instanciacao da encriptacao
-    EncryptionParameters parms(scheme_type::bfv);   //encriptacao em bfv para calculos em integers encriptados
+    EncryptionParameters parms(scheme_type::bfv); //encriptacao em bfv para calculos em integers encriptados
 
-    parms_file.open("lib/assets/certificates/database/parms.pem",ios::binary);
+    parms_file.open("../assets/certificates/database/parms.pem", ios::binary);
     parms.load(parms_file);
     parms_file.close();
 
-    sec_file.open("lib/assets/certificates/database/db_sckey.key",ios::binary);
+    sec_file.open("../assets/certificates/database/db_sckey.key", ios::binary);
 
     //contexto e validacao
     SEALContext context(parms);
 
-    if(sec_file.is_open()){
-        db_seckey.load(context,sec_file);
+    if (sec_file.is_open())
+    {
+        db_seckey.load(context, sec_file);
         sec_file.close();
     }
 
@@ -124,19 +118,23 @@ void data_decryption(Ciphertext** cypher,Ciphertext** bitM,int lines,int columns
     //decriptacao usando private
     Decryptor decryptor(context, db_seckey);
 
-    data_file.open("lib/assets/certificates/database/data.bin",ios::in | ios::binary);
-    if(data_file.is_open()){
-        for(int i=0;i<lines;i++){
-            for(int j=0;j<columns;j++){
+    data_file.open("../assets/certificates/database/data.bin", ios::in | ios::binary);
+    if (data_file.is_open())
+    {
+        for (int i = 0; i < lines; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
                 data_file >> cypher_size;
-                load_buffer.load(context,data_file);
+                load_buffer.load(context, data_file);
                 decryptor.decrypt(load_buffer, buffer_decrypted);
                 cout << "Value is: " << buffer_decrypted.to_string() << endl;
                 stringstream buffer(buffer_decrypted.to_string());
                 buffer >> data[i][j];
-                for(int k=0;k<8;k++){
+                for (int k = 0; k < 8; k++)
+                {
                     data_file >> cypher_size;
-                    load_buffer.load(context,data_file);
+                    load_buffer.load(context, data_file);
                     decryptor.decrypt(load_buffer, buffer_decrypted);
                     cout << buffer_decrypted.to_string();
                 }
@@ -147,42 +145,51 @@ void data_decryption(Ciphertext** cypher,Ciphertext** bitM,int lines,int columns
     }
 }
 
-void allocate_data(int** &data,Ciphertext** &cypher,Ciphertext** &bitM,int lines,int columns) {
+void allocate_data(int **&data, Ciphertext **&cypher, Ciphertext **&bitM, int lines, int columns)
+{
     //
-    int data_test[4][3] = {     //age,height,awards
-            {3, 5, 3} ,
-            {3, 5, 4} ,
-            {1, 2, 5} ,
-            {5, 2, 3} ,
+    int data_test[4][3] = {
+        //age,height,awards
+        {3, 5, 3},
+        {3, 5, 4},
+        {1, 2, 5},
+        {5, 2, 3},
     };
     //
 
-    data = new int*[lines];
-    cypher = new Ciphertext*[lines];
-    bitM = new Ciphertext*[lines*columns];
-    for(int i=0;i<lines;i++){
-        data[i]=new int[columns];
-        cypher[i]=new Ciphertext[columns];
+    data = new int *[lines];
+    cypher = new Ciphertext *[lines];
+    bitM = new Ciphertext *[lines * columns];
+    for (int i = 0; i < lines; i++)
+    {
+        data[i] = new int[columns];
+        cypher[i] = new Ciphertext[columns];
     }
-    for(int i=0;i<lines*columns;i++){
-        bitM[i]=new Ciphertext[8];
+    for (int i = 0; i < lines * columns; i++)
+    {
+        bitM[i] = new Ciphertext[8];
     }
 
     //
-    for(int i=0;i<lines;i++){
-        for(int j=0;j<columns;j++){
-            data[i][j]=data_test[i][j];
+    for (int i = 0; i < lines; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            data[i][j] = data_test[i][j];
         }
     }
     //
 }
 
-void data_destructor(int** data,Ciphertext** cypher,Ciphertext** bitM,int lines,int columns) {
-    for(int i=0;i<lines;i++){
+void data_destructor(int **data, Ciphertext **cypher, Ciphertext **bitM, int lines, int columns)
+{
+    for (int i = 0; i < lines; i++)
+    {
         delete[] data[i];
         delete[] cypher[i];
     }
-    for(int i=0;i<lines*columns;i++){
+    for (int i = 0; i < lines * columns; i++)
+    {
         delete[] bitM[i];
     }
     delete[] data;

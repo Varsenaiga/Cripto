@@ -131,44 +131,98 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named exec
+# Target rules for targets named cripto
 
 # Build rule for target.
-exec: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exec
-.PHONY : exec
+cripto: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cripto
+.PHONY : cripto
 
 # fast build rule for target.
-exec/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/build
-.PHONY : exec/fast
+cripto/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/build
+.PHONY : cripto/fast
 
-example.o: example.cpp.o
+encryptions/data/data_encryption.o: encryptions/data/data_encryption.cpp.o
 
-.PHONY : example.o
+.PHONY : encryptions/data/data_encryption.o
 
 # target to build an object file
-example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/example.cpp.o
-.PHONY : example.cpp.o
+encryptions/data/data_encryption.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/data/data_encryption.cpp.o
+.PHONY : encryptions/data/data_encryption.cpp.o
 
-example.i: example.cpp.i
+encryptions/data/data_encryption.i: encryptions/data/data_encryption.cpp.i
 
-.PHONY : example.i
+.PHONY : encryptions/data/data_encryption.i
 
 # target to preprocess a source file
-example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/example.cpp.i
-.PHONY : example.cpp.i
+encryptions/data/data_encryption.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/data/data_encryption.cpp.i
+.PHONY : encryptions/data/data_encryption.cpp.i
 
-example.s: example.cpp.s
+encryptions/data/data_encryption.s: encryptions/data/data_encryption.cpp.s
 
-.PHONY : example.s
+.PHONY : encryptions/data/data_encryption.s
 
 # target to generate assembly for a file
-example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec.dir/build.make CMakeFiles/exec.dir/example.cpp.s
-.PHONY : example.cpp.s
+encryptions/data/data_encryption.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/data/data_encryption.cpp.s
+.PHONY : encryptions/data/data_encryption.cpp.s
+
+encryptions/database/database_encryption.o: encryptions/database/database_encryption.cpp.o
+
+.PHONY : encryptions/database/database_encryption.o
+
+# target to build an object file
+encryptions/database/database_encryption.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/database/database_encryption.cpp.o
+.PHONY : encryptions/database/database_encryption.cpp.o
+
+encryptions/database/database_encryption.i: encryptions/database/database_encryption.cpp.i
+
+.PHONY : encryptions/database/database_encryption.i
+
+# target to preprocess a source file
+encryptions/database/database_encryption.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/database/database_encryption.cpp.i
+.PHONY : encryptions/database/database_encryption.cpp.i
+
+encryptions/database/database_encryption.s: encryptions/database/database_encryption.cpp.s
+
+.PHONY : encryptions/database/database_encryption.s
+
+# target to generate assembly for a file
+encryptions/database/database_encryption.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/database/database_encryption.cpp.s
+.PHONY : encryptions/database/database_encryption.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -178,10 +232,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... exec"
-	@echo "... example.o"
-	@echo "... example.i"
-	@echo "... example.s"
+	@echo "... cripto"
+	@echo "... encryptions/data/data_encryption.o"
+	@echo "... encryptions/data/data_encryption.i"
+	@echo "... encryptions/data/data_encryption.s"
+	@echo "... encryptions/database/database_encryption.o"
+	@echo "... encryptions/database/database_encryption.i"
+	@echo "... encryptions/database/database_encryption.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

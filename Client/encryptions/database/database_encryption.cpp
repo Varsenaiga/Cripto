@@ -1,13 +1,16 @@
 #include "database_encryption.h"
 
-void db_key(SecretKey db_seckey,PublicKey db_pubkey){
+void db_key()
+{
+    PublicKey db_pubkey;
+    SecretKey db_seckey;
     ofstream file;
     ofstream pb;
     ofstream sc;
     ofstream rel;
 
     //instanciacao da encriptacao
-    EncryptionParameters parms(scheme_type::bfv);   //encriptacao em bfv para calculos em integers encriptados
+    EncryptionParameters parms(scheme_type::bfv); //encriptacao em bfv para calculos em integers encriptados
 
     //parametros
     size_t poly_modulus_degree = 16384;
@@ -20,7 +23,7 @@ void db_key(SecretKey db_seckey,PublicKey db_pubkey){
     //contexto e validacao
     SEALContext context(parms);
 
-    KeyGenerator keygen(context);   //instaciacao das chaves
+    KeyGenerator keygen(context);    //instaciacao das chaves
     db_seckey = keygen.secret_key(); //criacao da secret_key
     //criacao public_key
     keygen.create_public_key(db_pubkey);
@@ -28,23 +31,34 @@ void db_key(SecretKey db_seckey,PublicKey db_pubkey){
     RelinKeys relin_keys;
     keygen.create_relin_keys(relin_keys);
 
-    file.open("lib/assets/certificates/database/parms.pem",ios::binary);
+    file.open("../assets/certificates/database/parms.pem", ios::binary);
     parms.save(file);
     file.close();
-    pb.open("lib/assets/certificates/database/db_pbkey.key",ios::binary);
+    pb.open("../assets/certificates/database/db_pbkey.key", ios::binary);
     db_pubkey.save(pb);
     pb.close();
-    sc.open("lib/assets/certificates/database/db_sckey.key",ios::binary);
+    sc.open("../assets/certificates/database/db_sckey.key", ios::binary);
     db_seckey.save(sc);
     sc.close();
-    rel.open("lib/assets/certificates/database/db_relkey.key",ios::binary);
+    rel.open("../assets/certificates/database/db_relkey.key", ios::binary);
     relin_keys.save(rel);
     rel.close();
+
+    /*file.open("../../Server/assets/certificates/database/parms.pem", ios::binary);
+    parms.save(file);
+    file.close();
+    pb.open("../../Serverassets/certificates/database/db_pbkey.key", ios::binary);
+    db_pubkey.save(pb);
+    pb.close();
+    rel.open("../../Serverassets/certificates/database/db_relkey.key", ios::binary);
+    relin_keys.save(rel);
+    rel.close();*/
 }
 
-void key_confirm(SecretKey db_seckey,PublicKey db_pubkey){
+void key_confirm(SecretKey db_seckey, PublicKey db_pubkey)
+{
     //instanciacao da encriptacao
-    EncryptionParameters parms(scheme_type::bfv);   //encriptacao em bfv para calculos em integers encriptados
+    EncryptionParameters parms(scheme_type::bfv); //encriptacao em bfv para calculos em integers encriptados
 
     //parametros
     size_t poly_modulus_degree = 4096;
@@ -93,13 +107,13 @@ void key_confirm(SecretKey db_seckey,PublicKey db_pubkey){
     Plaintext x_decrypted_bin;
 
     std::string input_bin = std::bitset<32>(x).to_string(); //to binary
-    std::cout<<input_bin<<"<-Binario\n";
+    std::cout << input_bin << "<-Binario\n";
 
-    for(int i=0;i<32;i++){
-        x_plain_bin=input_bin[i];
+    for (int i = 0; i < 32; i++)
+    {
+        x_plain_bin = input_bin[i];
         encryptor.encrypt(x_plain_bin, x_encrypted_bin);
         decryptor.decrypt(x_encrypted_bin, x_decrypted_bin);
         cout << i << ":" << x_decrypted_bin.to_string() << " <-Binario" << endl;
     }
-
 }

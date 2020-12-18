@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/cripto.dir/main.cpp.o CMakeFiles/cripto.dir/encryptions/database/database_encryption.cpp.o CMakeFiles/cripto.dir/encryptions/data/data_encryption.cpp.o  -o executable/cripto  /home/maxvital/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/lib/libseal-3.6.a -pthread 
