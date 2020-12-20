@@ -2,8 +2,8 @@
 
 void query_computations(PublicKey db_pubkey, SecretKey db_seckey, Ciphertext **cypher, Ciphertext **bitM, int lines, int columns)
 {
-    query_sum(cypher, bitM, lines, columns, 3, 0, 1, 1);
     Ciphertext *returner = new Ciphertext[lines];
+    returner[0] = query_sum(cypher, bitM, lines, columns, 3, 0, 1, 1);
     query_find(cypher, bitM, lines, columns, 5, 0, 1, returner);
     delete[] returner;
 }
