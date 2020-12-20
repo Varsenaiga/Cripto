@@ -8,6 +8,10 @@ int main()
     int **data = nullptr;
     Ciphertext **cypher;
     Ciphertext **bitM;
+    string str;
+
+    str = get_client_input();
+    std::cout << str << "\n";
 
     db_key();
 

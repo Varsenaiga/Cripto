@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cripto.dir/encryptions/data/data_encryption.cpp.o"
   "CMakeFiles/cripto.dir/encryptions/database/database_encryption.cpp.o"
+  "CMakeFiles/cripto.dir/input.cpp.o"
   "CMakeFiles/cripto.dir/main.cpp.o"
   "executable/cripto"
   "executable/cripto.pdb"

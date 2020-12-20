@@ -197,6 +197,33 @@ encryptions/database/database_encryption.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/encryptions/database/database_encryption.cpp.s
 .PHONY : encryptions/database/database_encryption.cpp.s
 
+input.o: input.cpp.o
+
+.PHONY : input.o
+
+# target to build an object file
+input.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/input.cpp.o
+.PHONY : input.cpp.o
+
+input.i: input.cpp.i
+
+.PHONY : input.i
+
+# target to preprocess a source file
+input.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/input.cpp.i
+.PHONY : input.cpp.i
+
+input.s: input.cpp.s
+
+.PHONY : input.s
+
+# target to generate assembly for a file
+input.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/input.cpp.s
+.PHONY : input.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -239,6 +266,9 @@ help:
 	@echo "... encryptions/database/database_encryption.o"
 	@echo "... encryptions/database/database_encryption.i"
 	@echo "... encryptions/database/database_encryption.s"
+	@echo "... input.o"
+	@echo "... input.i"
+	@echo "... input.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

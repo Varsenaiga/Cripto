@@ -94,12 +94,12 @@ clean: CMakeFiles/cripto.dir/clean
 CMakeFiles/cripto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/CMakeFiles --progress-num=1,2,3,4 "Built target cripto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/CMakeFiles --progress-num=1,2,3,4,5 "Built target cripto"
 .PHONY : CMakeFiles/cripto.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cripto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cripto.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/CMakeFiles 0
 .PHONY : CMakeFiles/cripto.dir/rule

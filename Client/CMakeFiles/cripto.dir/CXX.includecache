@@ -952,10 +952,6 @@ seal/util/defines.h
 cstdint
 -
 
-/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/encryptions/data/data_encryption.cpp
-data_encryption.h
-/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/encryptions/data/data_encryption.h
-
 /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/encryptions/data/data_encryption.h
 seal/seal.h
 /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/encryptions/data/seal/seal.h
@@ -982,6 +978,12 @@ fstream
 bitset
 -
 
+/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/input.h
+fstream
+-
+string.h
+-
+
 /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/main.cpp
 iostream
 -
@@ -995,4 +997,6 @@ encryptions/database/database_encryption.h
 /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/encryptions/database/database_encryption.h
 encryptions/data/data_encryption.h
 /mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/encryptions/data/data_encryption.h
+input.h
+/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Client/input.h
 
