@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string.h>
+#include "encryptions.h"
+#include "../Client/encryptions/database/database_encryption.h"
 
 using namespace std;
 
@@ -207,73 +209,6 @@ void install_server_client_CA(int client)
     system(command2.c_str());
 }
 
-void sign_file(string filepath, string keypath, int client)
-{
-    string command;
-    string serverfolder = "../Proj/Server/";
-
-    serverfolder.append(to_string(client));
-    command = "sudo openssl dgst -sha512 -sign ";
-    command.append(keypath);
-    command.append(" -out ");
-    command.append(serverfolder);
-    command.append("/digest.sha512 ");
-    command.append(filepath);
-    system(command.c_str());
-}
-
-void verify_file(string filepath, int client)
-{
-    string command;
-    string serverfolder = "../Proj/Server/";
-
-    serverfolder.append(to_string(client));
-    command = "cd ";
-    command.append(serverfolder);
-    command.append("/ && sudo openssl dgst -sha512 -verify client-pubkey.pem -signature digest.sha512 ");
-    command.append(filepath);
-    system(command.c_str());
-}
-
-void encrypt_file(string filepath, string filename, string crtpath)
-{
-    string command;
-    string openfilefolder;
-    string encfilename = filename;
-
-    openfilefolder = "cd ";
-    openfilefolder.append(filepath);
-    command = " && sudo openssl smime -encrypt -binary -aes-256-cbc -in ";
-    command.append(filename);
-    command.append(" -out ");
-    encfilename.append(".enc");
-    command.append(encfilename);
-    command.append(" -outform DER ");
-    command.append(crtpath);
-    openfilefolder.append(command);
-    system(openfilefolder.c_str());
-}
-
-void decrypt_file(string filepath, string filename, string keypath)
-{
-    string command;
-    string openfilefolder;
-    string encfilename = filename;
-
-    openfilefolder = "cd ";
-    openfilefolder.append(filepath);
-    command = " && openssl smime -decrypt -binary -in ";
-    command.append(filename);
-    command.append(" -inform DER -out ");
-    encfilename[encfilename.size() - 3] = 'd';
-    encfilename[encfilename.size() - 2] = 'e';
-    command.append(encfilename);
-    command.append(" -inkey ");
-    command.append(keypath);
-    openfilefolder.append(command);
-    system(openfilefolder.c_str());
-}
-
 int main()
 {
     generate_root_ca();
@@ -281,6 +216,7 @@ int main()
     server_privatekey();
     server_certificate();
     install_server_root_CA();
+    db_key();
 
     system("sudo mkdir ../Proj/Clients");
     for (int i = 0; i < 3; i = i + 1)
@@ -293,9 +229,4 @@ int main()
         extract_pubkey(i);
         install_server_client_CA(i);
     }
-
-    //encrypt_file("../../", "tiago.bin", "CA/Proj/Clients/1/server-cert.crt");
-    //decrypt_file("../../", "tiago.bin.enc", "CA/Proj/Server/server-key.pem");
-    //sign_file("~/Desktop/hey.txt", "../Proj/Clients/1/client-key.pem", 1);
-    //verify_file("~/Desktop/hey.txt", 1);
 }

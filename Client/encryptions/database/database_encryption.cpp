@@ -31,28 +31,28 @@ void db_key()
     RelinKeys relin_keys;
     keygen.create_relin_keys(relin_keys);
 
-    file.open("../assets/certificates/database/parms.pem", ios::binary);
+    file.open("../Client/assets/certificates/database/parms.pem", ios::binary);
     parms.save(file);
     file.close();
-    pb.open("../assets/certificates/database/db_pbkey.key", ios::binary);
+    pb.open("../Client/assets/certificates/database/db_pbkey.key", ios::binary);
     db_pubkey.save(pb);
     pb.close();
-    sc.open("../assets/certificates/database/db_sckey.key", ios::binary);
+    sc.open("../Client/assets/certificates/database/db_sckey.key", ios::binary);
     db_seckey.save(sc);
     sc.close();
-    rel.open("../assets/certificates/database/db_relkey.key", ios::binary);
+    rel.open("../Client/assets/certificates/database/db_relkey.key", ios::binary);
     relin_keys.save(rel);
     rel.close();
 
-    /*file.open("../../Server/assets/certificates/database/parms.pem", ios::binary);
+    file.open("../Server/assets/certificates/database/parms.pem", ios::binary);
     parms.save(file);
     file.close();
-    pb.open("../../Serverassets/certificates/database/db_pbkey.key", ios::binary);
+    pb.open("../Server/assets/certificates/database/db_pbkey.key", ios::binary);
     db_pubkey.save(pb);
     pb.close();
-    rel.open("../../Serverassets/certificates/database/db_relkey.key", ios::binary);
+    rel.open("../Server/assets/certificates/database/db_relkey.key", ios::binary);
     relin_keys.save(rel);
-    rel.close();*/
+    rel.close();
 }
 
 void key_confirm(SecretKey db_seckey, PublicKey db_pubkey)

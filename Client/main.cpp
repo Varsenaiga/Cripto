@@ -13,18 +13,16 @@ int main()
     str = get_client_input();
     std::cout << str << "\n";
 
-    db_key();
-
     int lines = 4;
     int columns = 3;
 
-    allocate_data(data, cypher, bitM, lines, columns);
+    //allocate_data(data, cypher, bitM, lines, columns);
 
-    data_encryption(data, cypher, bitM, lines, columns);
+    //data_encryption(data, cypher, bitM, lines, columns);
 
-    data_decryption(cypher, bitM, lines, columns, data);
+    //data_decryption(cypher, bitM, lines, columns, data);
 
-    data_destructor(data, cypher, bitM, lines, columns);
+    //data_destructor(data, cypher, bitM, lines, columns);
 
     return buffer;
 }

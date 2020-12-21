@@ -1,2 +1,2 @@
-1
-Select * from user
+3
+INSERT INTO andre (peso, altura) VALUES (

@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/create.dir/create.cpp.o  -o create  /home/maxvital/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/cripto/Administrator/lib/libseal-3.6.a -pthread 
+/usr/bin/c++     CMakeFiles/create.dir/create.cpp.o CMakeFiles/create.dir/encryptions.cpp.o  -o create  /home/maxvital/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/cripto/Administrator/lib/libseal-3.6.a -pthread 

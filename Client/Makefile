@@ -251,6 +251,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.o: mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.o
+
+.PHONY : mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.o
+
+# target to build an object file
+mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.o
+.PHONY : mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.o
+
+mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.i: mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.i
+
+.PHONY : mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.i
+
+# target to preprocess a source file
+mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.i
+.PHONY : mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.i
+
+mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.s: mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.s
+
+.PHONY : mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.s
+
+# target to generate assembly for a file
+mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cripto.dir/build.make CMakeFiles/cripto.dir/mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.s
+.PHONY : mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -272,6 +299,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.o"
+	@echo "... mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.i"
+	@echo "... mnt/c/Users/ASUS/documents/faculdade/4_ano/1ºsemestre/cripto/Cripto/Administrator/encryptions.s"
 .PHONY : help
 
 

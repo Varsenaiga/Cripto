@@ -10,7 +10,7 @@ find_package(SEAL 3.6.0 EXACT REQUIRED)
 add_executable(create)
 
 # ADD ALL SOURCE FILES TO BE COMPILED (e.g. exec.cpp)
-target_sources(create PRIVATE create.cpp)
+target_sources(create PRIVATE create.cpp encryptions.cpp)
 
 # LINK SEAL
 target_link_libraries(create SEAL::seal)

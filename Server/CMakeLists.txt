@@ -12,7 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/executable)
 add_executable(cripto)
 
 # ADD ALL SOURCE FILES TO BE COMPILED (e.g. exec.cpp)
-target_sources(cripto PRIVATE main.cpp processing/data_processing.cpp)
+target_sources(cripto PRIVATE main.cpp processing/data_processing.cpp bd.cpp)
 
 # LINK SEAL
 target_link_libraries(cripto SEAL::seal)
